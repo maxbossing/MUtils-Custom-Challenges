@@ -2,26 +2,26 @@ import net.minecrell.pluginyml.bukkit.BukkitPluginDescription
 import net.minecrell.pluginyml.paper.PaperPluginDescription
 
 plugins {
-    kotlin("jvm") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("jvm") version "2.0.0"
+    kotlin("plugin.serialization") version "2.0.0"
 
-    id("io.papermc.paperweight.userdev") version "1.5.11"
-    id("xyz.jpenilla.run-paper") version "1.1.0"
+    id("io.papermc.paperweight.userdev") version "1.7.1"
+    id("xyz.jpenilla.run-paper") version "2.3.0"
     id("net.minecrell.plugin-yml.paper") version "0.6.0"
 }
 
 group = "de.maxbossing"
-version = 1
+version = 2
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    paperweight.paperDevBundle("1.20.4-R0.1-SNAPSHOT")
+    paperweight.paperDevBundle("1.21-R0.1-SNAPSHOT")
 
     // Older version cuz API uses old
-    paperLibrary("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.5.0")
+    paperLibrary("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.6.2")
 
     paperLibrary("de.maxbossing","mxpaper", "3.0.0")
 
@@ -31,20 +31,20 @@ dependencies {
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(21))
     }
 }
 
 tasks {
-    assemble {
-        dependsOn(reobfJar)
-    }
     compileJava {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
     compileKotlin {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = "21"
+    }
+    runServer {
+        minecraftVersion("1.21")
     }
 }
 
@@ -52,7 +52,7 @@ paper {
     name = "MXChallenges"
     description = "Challenges that aren't in MUtils, but should!"
 
-    apiVersion = "1.20"
+    apiVersion = "1.21"
 
     author = "Max Bossing <info@maxbossing.de>"
     website = "https://maxbossing.de"

@@ -1,6 +1,5 @@
 package de.maxbossing.mxchallenges.addons.internal
 
-import de.maxbossing.mxchallenges.addons.BlockBreakSpawner
 import de.maxbossing.mxchallenges.addons.ChunkEffects
 import de.maxbossing.mxchallenges.addons.DamagePunisher
 import de.maxbossing.mxchallenges.addons.MoreDamagers
@@ -10,11 +9,10 @@ import de.miraculixx.challenge.api.utils.Icon
 import de.miraculixx.challenge.api.utils.IconNaming
 import java.util.*
 
-enum class Addons(private val addon: AbstractAddon, val uuid: UUID = UUID.randomUUID()) {
-    CHUNK_EFFECTS(ChunkEffects()),
-    MORE_DAMAGERS(MoreDamagers()),
-    BLOCK_BREAK_SPAWNER(BlockBreakSpawner()),
-    DAMAGE_PUNISHER(DamagePunisher())
+enum class Addons(private val addon: AbstractAddon, val uuid: UUID) {
+    CHUNK_EFFECTS(ChunkEffects(), UUID.fromString("87e4fe12-4b97-4a77-ba85-510d3bca7b18")),
+    MORE_DAMAGERS(MoreDamagers(), UUID.fromString("cdfaa4bc-2d9d-49bc-bc96-60a9535e9754")),
+    DAMAGE_PUNISHER(DamagePunisher(), UUID.fromString("1fb335aa-8622-42b2-821f-04ce83c1bd81")),
     ;
 
     fun getModData() = CustomChallengeData(

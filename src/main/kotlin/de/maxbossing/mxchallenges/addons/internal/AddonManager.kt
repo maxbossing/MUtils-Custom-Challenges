@@ -59,7 +59,7 @@ object AddonManager {
         }
 
         // Add all mods to MUtils
-        Addons.values().forEach { mod ->
+        Addons.entries.forEach { mod ->
             val prodData = api.addChallenge(mod.uuid, mod.getModData())
             if (prodData == null) {
                 console.sendMessage(prefix + cmp("Failed to inject ${mod.name} to MChallenge!"))
